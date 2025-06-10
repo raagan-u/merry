@@ -1,0 +1,64 @@
+groups:
+  bitcoin:
+    description: "Bitcoin network and related services"
+    patterns:
+      - "bitcoin"
+      - "*bit*"
+      - "electrs"
+      - "esplora" 
+      - "chopsticks"
+      - "cosigner"
+    excludes:
+      - "*arbitrum*"
+
+  ethereum:
+    description: "Ethereum network and related services"
+    patterns:
+      - "ethereum*"
+      - "*evm*"
+    excludes:
+      - "garden-evm-watcher"
+
+  arbitrum:
+    description: "Arbitrum L2 network and services"
+    patterns:
+      - "arbitrum*"
+
+  ripple:
+    description: "XRP Ledger services"
+    patterns:
+      - "rippled"
+      - "xrp*"
+
+  garden:
+    description: "garden services"
+    includes:
+      - "authenticator"
+      - "orderbookV2"
+      - "relayer"
+      - "info"
+      - "garden-evm-watcher"
+      - "quote"
+      - "cobiv2"
+      - "virtual-balance"
+
+  infrastructure:
+    description: "Core infrastructure services"
+    patterns:
+      - "postgres*"
+      - "*db"
+      - "redis"
+      - "nginx"
+
+  explorers:
+    description: "All blockchain explorers"
+    patterns:
+      - "*explorer*"
+      - "esplora"
+
+  databases:
+    description: "Database services"
+    patterns:
+      - "postgres*"
+      - "*db"
+      - "redis"

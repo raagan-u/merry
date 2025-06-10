@@ -43,7 +43,7 @@ func main() {
 			panic(err)
 		}
 	}
-	cmd.AddCommand(Start(&state), Stop(&state), Faucet(&state), Replace(&state), Logs(state), RPC(state), Update(), Version(state), Status(state))
+	cmd.AddCommand(Start(&state), Stop(&state), Faucet(&state), Replace(&state), Logs(state), RPC(state), Update(), Version(state), Status(state), Disable(state), Enable(state), ListGroups(state))
 	if err := cmd.Execute(); err != nil {
 		panic(err)
 	}
@@ -198,6 +198,39 @@ func Status(m merry.Merry) *cobra.Command {
 		Short: "Get the list of active services under merry",
 		RunE: func(c *cobra.Command, args []string) error {
 			return m.Status()
+		},
+	}
+	return cmd
+}
+
+func Disable(m merry.Merry) *cobra.Command {
+	var cmd = &cobra.Command{
+		Use:   "disable",
+		Short: "Disable groups service under merry",
+		RunE: func(c *cobra.Command, args []string) error {
+			return m.Disable(args...)
+		},
+	}
+	return cmd
+}
+
+func Enable(m merry.Merry) *cobra.Command {
+	var cmd = &cobra.Command{
+		Use:   "enable",
+		Short: "Enable groups service under merry",
+		RunE: func(c *cobra.Command, args []string) error {
+			return m.Enable(args...)
+		},
+	}
+	return cmd
+}
+
+func ListGroups(m merry.Merry) *cobra.Command {
+	var cmd = &cobra.Command{
+		Use:   "list-groups",
+		Short: "List groups service under merry",
+		RunE: func(c *cobra.Command, args []string) error {
+			return m.ListGroups()
 		},
 	}
 	return cmd
